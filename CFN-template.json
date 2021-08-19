@@ -1,0 +1,45 @@
+{
+	"AWSTemplateFormatVersion": "2010-09-09",
+	"Description": "AWS CloudFormation Template To Create the DynamoDB table 'stuff'",
+
+	"Resources": {
+		"StuffTable": {
+			"Type": "AWS::DynamoDB::Table",
+			"Properties": {
+				"TableName": "stuff",
+				"AttributeDefinitions": [{
+						"AttributeName": "id",
+						"AttributeType": "S"
+					},
+					{
+						"AttributeName": "created",
+						"AttributeType": "S"
+					}
+				],
+				"KeySchema": [
+
+					{
+						"AttributeName": "id",
+						"KeyType": "HASH"
+					},
+					{
+						"AttributeName": "created",
+						"KeyType": "RANGE"
+					}
+				],
+				"ProvisionedThroughput": {
+					"ReadCapacityUnits": 50,
+					"WriteCapacityUnits": 50
+				}
+			}
+		}
+	},
+	"Outputs": {
+		"stuff": {
+			"Description": "Table 'stuff' has been Created successfully using this template.",
+			"Value": {
+				"Ref": "StuffTable"
+			}
+		}
+	}
+}
