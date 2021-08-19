@@ -19,11 +19,9 @@ def add_testing_items(amount):
 
 if __name__ == '__main__':
     # Get the service resource.
-    # dynamodb = boto3.resource('dynamodb', region_name='ap-southeast-2')
     dynamodb = boto3.resource('dynamodb')
 
-    # Instantiate a table resource object without actually
-    # creating a DynamoDB table. 
+    # Instantiate a table resource object
     table = dynamodb.Table('stuff')
 
     # Print out some data about the table.
